@@ -49,6 +49,9 @@ CSV:
 03-02-2017,3000,Tesco
 05-02-2017,-30,Cinema
 
+> 6946d317afc26c595cfdcafca43927d0fd8a1eab
+
+
 1. Total profit and loss in a list of bank statements
 2. Total transaction in a specific month
 3. Top 10 expenses
