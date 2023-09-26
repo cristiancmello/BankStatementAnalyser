@@ -65,6 +65,7 @@ Corner Case Questions (Ch 03):
 - What if statement line is empty?
 
 + more recently
+> 9099a071fb811fa23cd5df1a6f56eeffa1fe3454
 > f8b3d40b24deeff37a0b644be2a5fe2825cab067
 > 6946d317afc26c595cfdcafca43927d0fd8a1eab
 - older
