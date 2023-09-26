@@ -39,6 +39,20 @@ public class BankTransactionAnalyserSimpleTest {
 
   @Test
   public void canCollectSummary() throws IOException {
+    var summary = getSummary();
+
+    final var bankStatementParser = new BankStatementCsvParser();
+    final var lines = Files.readAllLines(path);
+    var bankTransactions = bankStatementParser.parseLinesFromCsv(lines);
+
+    var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
+    var bankStatementProcessor = new BankStatementProcessor(bankTransactions);
+    bankTransactionsAnalyserSimple.collectSummary(bankStatementProcessor);
+
+    assertEquals(outContent.toString(), summary.toString());
+  }
+
+  private static StringBuilder getSummary() {
     var summaryLines = new ArrayList<String>();
 
     summaryLines.add("The total for all transactions is 6820,00");
@@ -54,15 +68,7 @@ public class BankTransactionAnalyserSimpleTest {
       if (i < summaryLines.size() - 1) summary.append('\n');
     }
 
-    final var bankStatementParser = new BankStatementCsvParser();
-    final var lines = Files.readAllLines(path);
-    var bankTransactions = bankStatementParser.parseLinesFromCsv(lines);
-
-    var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
-    var bankStatementProcessor = new BankStatementProcessor(bankTransactions);
-    bankTransactionsAnalyserSimple.collectSummary(bankStatementProcessor);
-
-    assertEquals(outContent.toString(), summary.toString());
+    return summary;
   }
 }
 
