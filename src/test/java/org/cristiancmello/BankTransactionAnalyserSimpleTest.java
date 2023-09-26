@@ -76,6 +76,7 @@ Extracting filename and path as class field from BankTransactionAnalyserSimple
 ...
 
 + more recently
+> 26d82d703d363f92bb71d51cab813ed80a66a169
 > 9464138130904b1b1d3ad379c69a9d6a2a01c9af
 > 2dda59dae1e2a3700a7315fd1d7fafacaceeac81
 > d1fd96e88a249edc789b2dd33db1926df52a7216
