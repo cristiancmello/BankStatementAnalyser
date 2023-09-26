@@ -27,7 +27,7 @@ public class BankTransactionAnalyserSimpleTest {
   }
 
   @Test
-  public void canPrintTotalTransaction() {
+  public void canPrintTotalTransaction() throws Exception {
     var totalTransactionsOutput = "The total for all transactions is 6820,00";
 
     var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
@@ -50,6 +50,7 @@ CSV:
 05-02-2017,-30,Cinema
 
 > 6946d317afc26c595cfdcafca43927d0fd8a1eab
+
 
 
 1. Total profit and loss in a list of bank statements
