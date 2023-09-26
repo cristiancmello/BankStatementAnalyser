@@ -49,6 +49,11 @@ CSV:
 03-02-2017,3000,Tesco
 05-02-2017,-30,Cinema
 
+Corner Case Questions (Ch 03):
+- If the csv file is empty?
+- What if value analysis fails 'cause some data is corrupted?
+- What if statement line is empty?
+
 + more recently
 > f8b3d40b24deeff37a0b644be2a5fe2825cab067
 > 6946d317afc26c595cfdcafca43927d0fd8a1eab
