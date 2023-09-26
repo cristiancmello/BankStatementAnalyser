@@ -35,6 +35,16 @@ public class BankTransactionAnalyserSimpleTest {
 
     Assertions.assertEquals(outContent.toString(), totalTransactionsOutput);
   }
+
+  @Test
+  public void canPrintTotalTransactionInJanuary() throws Exception {
+    var totalTransactionsOutput = "The total for all transactions in January is -150,00";
+
+    var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
+    bankTransactionsAnalyserSimple.printTotalTransactionsInJanuary();
+
+    Assertions.assertEquals(outContent.toString(), totalTransactionsOutput);
+  }
 }
 
 /* TODO
