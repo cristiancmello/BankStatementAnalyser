@@ -6,9 +6,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class BankTransactionAnalyserSimpleTest {
+  final String filename = "statements.csv";
+  final Path path = Paths.get("src/main/resources/" + filename);
+
   private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
   private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
   private final PrintStream originalOut = System.out;
@@ -44,6 +51,28 @@ public class BankTransactionAnalyserSimpleTest {
     bankTransactionsAnalyserSimple.printTotalTransactionsInJanuary();
 
     Assertions.assertEquals(outContent.toString(), totalTransactionsOutput);
+  }
+
+  @Test
+  public void canCollectSummary() throws IOException {
+    var totalForAllTransactionsLine = "The total for all transactions is 6820,00";
+    var totalForTransactionsInJanuaryLine = "The total for all transactions in January is -150,00";
+    var totalForTransactionsInFebruaryLine = "The total for all transactions in February is 6970,00";
+    var totalSalaryReceivedLine = "The total salary received is 6000,00";
+
+    final var bankStatementParser = new BankStatementCsvParser();
+    final var lines = Files.readAllLines(path);
+    var bankTransactions = bankStatementParser.parseLinesFromCsv(lines);
+
+    var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
+    var bankStatementProcessor = new BankStatementProcessor(bankTransactions);
+    bankTransactionsAnalyserSimple.collectSummary(bankStatementProcessor);
+
+    Assertions.assertEquals(outContent.toString(), totalForAllTransactionsLine + '\n'
+      + totalForTransactionsInJanuaryLine + '\n'
+      + totalForTransactionsInFebruaryLine + '\n'
+      + totalSalaryReceivedLine
+    );
   }
 }
 
