@@ -72,6 +72,7 @@ Applying SRP
 
 Extracting parseFromCsv and parseLinesFromCsv methods from BankTransactionAnalyserSimple
 Extracting BankStatementCsvParser from BankTransactionAnalyserSimple
+Extracting filename and path as class field from BankTransactionAnalyserSimple
 
 + more recently
 > d1fd96e88a249edc789b2dd33db1926df52a7216

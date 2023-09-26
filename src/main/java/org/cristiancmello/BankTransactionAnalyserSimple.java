@@ -3,16 +3,17 @@ package org.cristiancmello;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
 public class BankTransactionAnalyserSimple {
+  final String filename = "statements.csv";
+  final Path path = Paths.get("src/main/resources/" + filename);
+
   public void printTotalTransactions() throws IOException {
     final var bankStatementParser = new BankStatementCsvParser();
-
-    final var filename = "statements.csv";
-    final var path = Paths.get("src/main/resources/" + filename);
 
     final var lines = Files.readAllLines(path);
 
@@ -27,9 +28,6 @@ public class BankTransactionAnalyserSimple {
 
   public void printTotalTransactionsInJanuary() throws IOException {
     final var bankStatementParser = new BankStatementCsvParser();
-
-    final var filename = "statements.csv";
-    final var path = Paths.get("src/main/resources/" + filename);
 
     var total = BigDecimal.ZERO;
 
