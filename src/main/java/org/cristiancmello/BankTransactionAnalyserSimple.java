@@ -30,10 +30,7 @@ public class BankTransactionAnalyserSimple {
 
     var bankTransactions = bankStatementParser.parseLinesFromCsv(lines);
     var bankStatementProcessor = new BankStatementProcessor(bankTransactions);
-    var transactionsInMonth = bankStatementProcessor.selectInMonth(Month.JANUARY);
-
-    bankStatementProcessor = new BankStatementProcessor(transactionsInMonth);
-    var total = bankStatementProcessor.calculateTotalAmount();
+    var total = bankStatementProcessor.calculateTotalAmountInMonth(Month.JANUARY);
 
     System.out.printf("The total for all transactions in January is %.2f", total);
   }

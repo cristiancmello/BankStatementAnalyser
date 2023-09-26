@@ -2,7 +2,6 @@ package org.cristiancmello;
 
 import java.math.BigDecimal;
 import java.time.Month;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BankStatementProcessor {
@@ -20,13 +19,13 @@ public class BankStatementProcessor {
     return total;
   }
 
-  public List<BankTransaction> selectInMonth(final Month month) {
-    final var bankTransactionsInMonth = new ArrayList<BankTransaction>();
+  public BigDecimal calculateTotalAmountInMonth(final Month month) {
+    var total = BigDecimal.ZERO;
 
-    for (final var bankTransaction : bankTransactions) {
-      if (bankTransaction.getDate().getMonth() == month) bankTransactionsInMonth.add(bankTransaction);
-    }
+    for (final var bankTransaction : bankTransactions)
+      if (bankTransaction.getDate().getMonth() == month)
+        total = total.add(bankTransaction.getAmount());
 
-    return bankTransactionsInMonth;
+    return total;
   }
 }
