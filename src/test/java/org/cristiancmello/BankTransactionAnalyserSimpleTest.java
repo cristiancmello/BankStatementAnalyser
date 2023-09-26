@@ -75,6 +75,7 @@ Extracting BankStatementCsvParser from BankTransactionAnalyserSimple
 Extracting filename and path as class field from BankTransactionAnalyserSimple
 
 + more recently
+> 2dda59dae1e2a3700a7315fd1d7fafacaceeac81
 > d1fd96e88a249edc789b2dd33db1926df52a7216
 > 8c86f16564dd3ba3d880da2983bdfae8d5624253
 > 9099a071fb811fa23cd5df1a6f56eeffa1fe3454
