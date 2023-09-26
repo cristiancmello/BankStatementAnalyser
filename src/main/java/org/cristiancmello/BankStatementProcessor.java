@@ -28,4 +28,14 @@ public class BankStatementProcessor {
 
     return total;
   }
+
+  public BigDecimal calculateTotalForCategory(final String category) {
+    var total = BigDecimal.ZERO;
+
+    for (final var bankTransaction : bankTransactions)
+      if (bankTransaction.getDescription().equals(category))
+        total = total.add(bankTransaction.getAmount());
+
+    return total;
+  }
 }

@@ -13,8 +13,9 @@ public class BankStatementCsvParser {
     final var columns = line.split(",");
     final var date = LocalDate.parse(columns[0], DATE_PATTERN);
     final var amount = new BigDecimal(columns[1]);
+    final var description = columns[2];
 
-    return new BankTransaction(date, amount);
+    return new BankTransaction(date, amount, description);
   }
 
   public List<BankTransaction> parseLinesFromCsv(final List<String> lines) {

@@ -11,6 +11,10 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BankTransactionAnalyserSimpleTest {
   final String filename = "statements.csv";
@@ -40,7 +44,7 @@ public class BankTransactionAnalyserSimpleTest {
     var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
     bankTransactionsAnalyserSimple.printTotalTransactions();
 
-    Assertions.assertEquals(outContent.toString(), totalTransactionsOutput);
+    assertEquals(outContent.toString(), totalTransactionsOutput);
   }
 
   @Test
@@ -50,15 +54,25 @@ public class BankTransactionAnalyserSimpleTest {
     var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
     bankTransactionsAnalyserSimple.printTotalTransactionsInJanuary();
 
-    Assertions.assertEquals(outContent.toString(), totalTransactionsOutput);
+    assertEquals(outContent.toString(), totalTransactionsOutput);
   }
 
   @Test
   public void canCollectSummary() throws IOException {
-    var totalForAllTransactionsLine = "The total for all transactions is 6820,00";
-    var totalForTransactionsInJanuaryLine = "The total for all transactions in January is -150,00";
-    var totalForTransactionsInFebruaryLine = "The total for all transactions in February is 6970,00";
-    var totalSalaryReceivedLine = "The total salary received is 6000,00";
+    var summaryLines = new ArrayList<String>();
+
+    summaryLines.add("The total for all transactions is 6820,00");
+    summaryLines.add("The total for all transactions in January is -150,00");
+    summaryLines.add("The total for all transactions in February is 6970,00");
+    summaryLines.add("The total salary received is 6000,00");
+
+    var summary = new StringBuilder();
+
+    for (int i = 0; i < summaryLines.size(); i++) {
+      summary.append(summaryLines.get(i));
+
+      if (i < summaryLines.size() - 1) summary.append('\n');
+    }
 
     final var bankStatementParser = new BankStatementCsvParser();
     final var lines = Files.readAllLines(path);
@@ -68,11 +82,7 @@ public class BankTransactionAnalyserSimpleTest {
     var bankStatementProcessor = new BankStatementProcessor(bankTransactions);
     bankTransactionsAnalyserSimple.collectSummary(bankStatementProcessor);
 
-    Assertions.assertEquals(outContent.toString(), totalForAllTransactionsLine + '\n'
-      + totalForTransactionsInJanuaryLine + '\n'
-      + totalForTransactionsInFebruaryLine + '\n'
-      + totalSalaryReceivedLine
-    );
+    assertEquals(outContent.toString(), summary.toString());
   }
 }
 
