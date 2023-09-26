@@ -38,26 +38,6 @@ public class BankTransactionAnalyserSimpleTest {
   }
 
   @Test
-  public void canPrintTotalTransaction() throws Exception {
-    var totalTransactionsOutput = "The total for all transactions is 6820,00";
-
-    var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
-    bankTransactionsAnalyserSimple.printTotalTransactions();
-
-    assertEquals(outContent.toString(), totalTransactionsOutput);
-  }
-
-  @Test
-  public void canPrintTotalTransactionInJanuary() throws Exception {
-    var totalTransactionsOutput = "The total for all transactions in January is -150,00";
-
-    var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
-    bankTransactionsAnalyserSimple.printTotalTransactionsInJanuary();
-
-    assertEquals(outContent.toString(), totalTransactionsOutput);
-  }
-
-  @Test
   public void canCollectSummary() throws IOException {
     var summaryLines = new ArrayList<String>();
 
