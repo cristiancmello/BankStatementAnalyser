@@ -59,7 +59,7 @@ Corner Case Questions (Ch 03):
 > 6946d317afc26c595cfdcafca43927d0fd8a1eab
 - older
 
-1. Total profit and loss in a list of bank statements
+1. Total profit and loss in a list of bank statements [DONE]
 2. Total transaction in a specific month
 3. Top 10 expenses
 4. Category where most money is spent
