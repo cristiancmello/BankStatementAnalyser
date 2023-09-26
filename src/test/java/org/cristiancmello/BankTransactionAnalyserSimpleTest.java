@@ -64,6 +64,15 @@ Corner Case Questions (Ch 03):
 - What if value analysis fails 'cause some data is corrupted?
 - What if statement line is empty?
 
+Applying SRP
+- Read Input
+- Analyse the input in specific format
+- process result
+- report result
+
+Extracting parseFromCsv and parseLinesFromCsv methods from BankTransactionAnalyserSimple
+Extracting BankStatementCsvParser from BankTransactionAnalyserSimple
+
 + more recently
 > 9099a071fb811fa23cd5df1a6f56eeffa1fe3454
 > f8b3d40b24deeff37a0b644be2a5fe2825cab067
