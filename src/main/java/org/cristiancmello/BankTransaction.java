@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class BankTransaction {
   private final BigDecimal amount;
 
-  private LocalDate date;
+  private final LocalDate date;
 
   public BankTransaction(LocalDate date, BigDecimal amount) {
     this.amount = amount;

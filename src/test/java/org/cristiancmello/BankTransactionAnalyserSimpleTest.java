@@ -74,6 +74,7 @@ Extracting parseFromCsv and parseLinesFromCsv methods from BankTransactionAnalys
 Extracting BankStatementCsvParser from BankTransactionAnalyserSimple
 
 + more recently
+> 8c86f16564dd3ba3d880da2983bdfae8d5624253
 > 9099a071fb811fa23cd5df1a6f56eeffa1fe3454
 > f8b3d40b24deeff37a0b644be2a5fe2825cab067
 > 6946d317afc26c595cfdcafca43927d0fd8a1eab
