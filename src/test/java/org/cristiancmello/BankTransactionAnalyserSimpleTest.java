@@ -8,11 +8,15 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -55,10 +59,10 @@ public class BankTransactionAnalyserSimpleTest {
   private static StringBuilder getSummary() {
     var summaryLines = new ArrayList<String>();
 
-    summaryLines.add("The total for all transactions is 6820,00");
-    summaryLines.add("The total for all transactions in January is -150,00");
-    summaryLines.add("The total for all transactions in February is 6970,00");
-    summaryLines.add("The total salary received is 6000,00");
+    summaryLines.add("The total for all transactions is 6820.00");
+    summaryLines.add("The total for all transactions in January is -150.00");
+    summaryLines.add("The total for all transactions in February is 6970.00");
+    summaryLines.add("The total salary received is 6000.00");
 
     var summary = new StringBuilder();
 
