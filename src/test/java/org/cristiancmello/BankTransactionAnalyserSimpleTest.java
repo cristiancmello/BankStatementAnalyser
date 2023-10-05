@@ -1,22 +1,16 @@
 package org.cristiancmello;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -47,7 +41,7 @@ public class BankTransactionAnalyserSimpleTest {
 
     final var bankStatementParser = new BankStatementCsvParser();
     final var lines = Files.readAllLines(path);
-    var bankTransactions = bankStatementParser.parseLinesFromCsv(lines);
+    var bankTransactions = bankStatementParser.parseLinesFrom(lines);
 
     var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
     var bankStatementProcessor = new BankStatementProcessor(bankTransactions);
@@ -99,7 +93,7 @@ Applying SRP
 - process result
 - report result
 
-Extracting parseFromCsv and parseLinesFromCsv methods from BankTransactionAnalyserSimple
+Extracting parseFromCsv and parseLinesFrom methods from BankTransactionAnalyserSimple
 Extracting BankStatementCsvParser from BankTransactionAnalyserSimple
 Extracting filename and path as class field from BankTransactionAnalyserSimple
 ...
