@@ -6,10 +6,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankStatementCsvParser {
+public class BankStatementCsvParser implements BankStatementParser {
   final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-  private BankTransaction parseFrom(final String line) {
+  public BankTransaction parseFrom(final String line) {
     final var columns = line.split(",");
     final var date = LocalDate.parse(columns[0], DATE_PATTERN);
     final var amount = new BigDecimal(columns[1]);

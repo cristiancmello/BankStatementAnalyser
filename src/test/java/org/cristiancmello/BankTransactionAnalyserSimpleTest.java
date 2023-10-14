@@ -7,17 +7,11 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BankTransactionAnalyserSimpleTest {
-  final String filename = "statements.csv";
-  final Path path = Paths.get("src/main/resources/" + filename);
-
   private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
   private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
   private final PrintStream originalOut = System.out;
@@ -36,16 +30,12 @@ public class BankTransactionAnalyserSimpleTest {
   }
 
   @Test
-  public void canCollectSummary() throws IOException {
+  public void canAnalyzeStatementFromCsv() throws IOException {
     var summary = getSummary();
 
     final var bankStatementParser = new BankStatementCsvParser();
-    final var lines = Files.readAllLines(path);
-    var bankTransactions = bankStatementParser.parseLinesFrom(lines);
-
-    var bankTransactionsAnalyserSimple = new BankTransactionAnalyserSimple();
-    var bankStatementProcessor = new BankStatementProcessor(bankTransactions);
-    bankTransactionsAnalyserSimple.collectSummary(bankStatementProcessor);
+    var bankStatementAnalyserSimple = new BankStatementAnalyserSimple();
+    bankStatementAnalyserSimple.analyze("statements.csv", bankStatementParser);
 
     assertEquals(outContent.toString(), summary.toString());
   }
@@ -93,9 +83,9 @@ Applying SRP
 - process result
 - report result
 
-Extracting parseFromCsv and parseLinesFrom methods from BankTransactionAnalyserSimple
-Extracting BankStatementCsvParser from BankTransactionAnalyserSimple
-Extracting filename and path as class field from BankTransactionAnalyserSimple
+Extracting parseFromCsv and parseLinesFrom methods from BankStatementAnalyserSimple
+Extracting BankStatementCsvParser from BankStatementAnalyserSimple
+Extracting filename and path as class field from BankStatementAnalyserSimple
 ...
 
 + more recently
